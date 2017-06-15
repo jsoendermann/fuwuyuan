@@ -46,7 +46,7 @@ if [[ ${args[0]} =~ ^(.*)/(.*)$ ]]; then
       -H "Content-Type: application/x-tar" \
       -H "Transfer-Encoding:chunked" \
       --data-binary "@${ARCHIVE_NAME}" \
-      "http://localhost/build?t=pfeifesocket1"
+      "http://localhost/build?t=pfeifesocket2"
 
     echo "Done curling"
     
