@@ -1,4 +1,4 @@
-FROM alpine:latest
+FROM node:alpine
 
 MAINTAINER Jan Soendermann <jan.soendermann+git@gmail.com>
 
@@ -8,7 +8,8 @@ RUN rm -rf /var/cache/apk/*
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 COPY pfeife.sh .
+COPY http-server.js .
 
 EXPOSE 8080
 
-ENTRYPOINT ["/bin/bash", "pfeife.sh"]
+ENTRYPOINT ["node", "http-server.js"]

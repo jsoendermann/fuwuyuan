@@ -5,13 +5,6 @@ echo "Thanks for using pfeife!"
 workdir=/workdir
 http_requests_file="$workdir/http_requests"
 
-_exit() { 
-  echo "Terminating..." 
-  exit
-}
-trap _exit SIGTERM
-trap _exit SIGKILL
-
 mkdir "$workdir"
 
 ncat --keep-open --listen 8080 > $http_requests_file &
