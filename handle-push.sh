@@ -38,12 +38,16 @@ if [[ ${args[0]} =~ ^(.*)/(.*)$ ]]; then
 
     cd ../..
 
+    echo "Curling"
+
     curl \
       --unix-socket /var/run/docker.sock \
       -H "Content-Type: application/x-tar" \
       -H "Transfer-Encoding:chunked" \
       --data-binary "@${ARCHIVE_NAME}" \
       "http://localhost/build?t=pfeifesocket1"
+
+    echo "Done curling"
     
     rm -f "$ARCHIVE_NAME"
   # )
