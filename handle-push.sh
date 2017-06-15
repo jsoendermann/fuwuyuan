@@ -42,13 +42,9 @@ if [[ ${args[0]} =~ ^(.*)/(.*)$ ]]; then
 
     ls -al
 
-    curl \
-      -vvv
-      --unix-socket /var/run/docker.sock \
-      -H "Content-Type: application/x-tar" \
-      -H "Transfer-Encoding:chunked" \
-      --data-binary "@${WORKDIR}/${ARCHIVE_NAME}" \
-      "http://localhost/build?t=pfeifesocket4"
+    echo "@${WORKDIR}/${ARCHIVE_NAME}"
+
+    curl -vvv --unix-socket /var/run/docker.sock -H "Content-Type: application/x-tar" -H "Transfer-Encoding:chunked" --data-binary "@${WORKDIR}/${ARCHIVE_NAME}" "http://localhost/build?t=pfeifesocket4"
 
     echo "Done curling"
     
