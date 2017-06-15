@@ -14,7 +14,9 @@ WORKDIR=/workdir
 WEBHOOK_JSON_PREFIX='{"name": "web", "active": true, "events": ["push"], "config": {"url": "'
 WEBHOOK_JSON_SUFFIX='", "content_type": "json"}}'
 
-mkdir "$WORKDIR"
+if [[ ! -d $WORKDIR ]]; then
+  mkdir "$WORKDIR"
+fi
 
 IFS=','
 read -ra BRANCHES_TO_WATCH_ARRAY <<< "$BRANCHES_TO_WATCH"
