@@ -7,9 +7,10 @@ RUN rm -rf /var/cache/apk/*
 
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
-COPY pfeife.sh .
+COPY startup.sh .
 COPY http-server.js .
+COPY handle-push.sh .
 
 EXPOSE 8080
 
-ENTRYPOINT ["node", "http-server.js"]
+ENTRYPOINT ["bash", "startup.sh"]
