@@ -16,7 +16,8 @@ const server = http.createServer((req, res) => {
         const repositoryName = data.repository.full_name
         const branch = data.ref.slice('refs/heads/'.length)
         console.log(`Push to ${repositoryName}#${branch}`)
-        spawn('bash', ['handle-push.sh', repositoryName, branch])
+        const cmd = spawn('bash', ['handle-push.sh', repositoryName, branch])
+        cmd.stdout.pipe(process.stdout)
       }
       res.statusCode = 200
       res.end()
