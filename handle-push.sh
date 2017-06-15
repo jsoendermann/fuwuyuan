@@ -7,7 +7,7 @@ echo "Building ${args[0]}#$BRANCH_NAME"
 
 # TODO move this to constants.sh
 # WORKDIR=/workdir
-WORKDIR=/Users/jan/TMP_pfeife_workdir
+WORKDIR=/workdir
 
 if [[ ${args[0]} =~ ^(.*)/(.*)$ ]]; then
   USERNAME=${BASH_REMATCH[1]}
@@ -27,7 +27,7 @@ if [[ ${args[0]} =~ ^(.*)/(.*)$ ]]; then
     git clone https://${GITHUB_USERNAME}:${PRIMLO_GITHUB_AUTH_TOKEN}@github.com/${USERNAME}/${REPO_NAME}.git "$REPO_DIR"
   fi
 
-  (
+  # (
     cd "$REPO_DIR"
     git checkout $BRANCH_NAME
     git pull
@@ -46,5 +46,5 @@ if [[ ${args[0]} =~ ^(.*)/(.*)$ ]]; then
       "http://localhost/build?t=pfeifesocket1"
     
     rm -f "$ARCHIVE_NAME"
-  )
+  # )
 fi
