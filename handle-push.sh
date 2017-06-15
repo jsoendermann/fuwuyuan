@@ -41,6 +41,7 @@ if [[ ${args[0]} =~ ^(.*)/(.*)$ ]]; then
     echo "Curling"
 
     curl \
+      -vvv
       --unix-socket /var/run/docker.sock \
       -H "Content-Type: application/x-tar" \
       -H "Transfer-Encoding:chunked" \
