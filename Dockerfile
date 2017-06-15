@@ -2,7 +2,7 @@ FROM node:alpine
 
 MAINTAINER Jan Soendermann <jan.soendermann+git@gmail.com>
 
-RUN apk add --no-cache nmap-ncat bash
+RUN apk add --no-cache nmap-ncat bash curl jq
 RUN rm -rf /var/cache/apk/*
 
 RUN mkdir -p /usr/src/app

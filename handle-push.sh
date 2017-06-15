@@ -1,0 +1,2 @@
+echo "Handle push"
+echo $@
