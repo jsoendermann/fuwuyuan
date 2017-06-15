@@ -3,6 +3,7 @@ set -e
 RED='\033[33;31m'
 NC='\033[0m'
 
+# TODO check all required env vars with function
 if [[ -z $PFEIFE_URL ]]; then
   echo -e "${RED}Env var PFEIFE_URL is required${NC}"
   exit -1
@@ -30,6 +31,8 @@ do
       --user "$GITHUB_USERNAME:$GITHUB_AUTH_TOKEN" \
       --data "$WEBHOOK_JSON_PREFIX$PFEIFE_URL$WEBHOOK_JSON_SUFFIX" \
       "https://api.github.com/repos/${BASH_REMATCH[1]}/hooks")
+
+    # TODO make this more robust
     MESSAGE=`echo "$RESULT" | jq '.message'`
     if [[ "$MESSAGE" == '"Validation Failed"' ]]; then
       ERROR_MESSAGE=`echo "$RESULT" | jq '.errors[0].message'`
