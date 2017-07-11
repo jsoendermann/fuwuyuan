@@ -5,9 +5,11 @@ MAINTAINER Jan Soendermann <jan.soendermann+git@gmail.com>
 
 RUN mkdir /front-end
 WORKDIR /front-end
-COPY ./front-end .
 
+COPY ./front-end/package.json .
 RUN npm install
+
+COPY ./front-end .
 RUN npm run build
 
 
@@ -29,6 +31,8 @@ WORKDIR /pfeife
 
 COPY --from=front-end-build-env /front-end/build ./front-end/
 COPY --from=pfeife-build-env /pfeife-src/pfeife .
+
+EXPOSE 8080
 
 ENTRYPOINT ["/pfeife/pfeife"]
 # CMD ["-help"]
